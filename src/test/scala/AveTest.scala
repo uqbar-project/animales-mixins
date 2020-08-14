@@ -26,12 +26,17 @@ class AveTest extends AnyFlatSpec with should.Matchers {
       assertResult(pepita.energia)(0)
     }
 
-    // Testear quién soy
+    it should "pepita al mandarle el mensaje quienSoyYo, debe responder quién es" in {
+      assertResult(pepita.quienSoyYo)("pepita")
+    }
 
-    // Testear que haya volado una vez
+    it should "pepita al volar, debe incrementar su cantidad de vuelos" in {
+      pepita.volar()
+      assertResult(pepita.vuelos)(1)
+    }
+
   }
 }
 
-// Armar otro archivo OsoTest.scala con
 // dos tipos de osos distintos => con diferentes traits
 // "Armelo ud. mismo " => construya su animal como quiera
