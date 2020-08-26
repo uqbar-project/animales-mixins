@@ -23,13 +23,12 @@ class Oso {
   }
 }
 
-trait Depredador {
+trait Depredador extends Mostrable {
   var energia = 0
   var alimentacion = new util.ArrayList[Comida]
 
   def comer(unaComida: String): Unit = {
     val comida = alimentacion.find((comida) => {
-      println("eh " + comida.tipoComida.equals(unaComida) + ", " + comida.tipoComida + " " + unaComida)
       comida.tipoComida.equals(unaComida)
     }
     )
@@ -42,6 +41,8 @@ trait Depredador {
   def agregarAlimentacion(unaComida: String): Unit = {
     alimentacion.add(new Comida(unaComida))
   }
+
+  override def toString: String = super.toString + " te re-come!!"
 }
 
 trait Contemplativo {
