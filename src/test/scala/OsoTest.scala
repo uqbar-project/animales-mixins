@@ -42,4 +42,9 @@ class OsoTest extends AnyFlatSpec with should.Matchers {
     assertResult(kenai.estaContemplativo)(true)
   }
 
+  it should "Show linearization mechanism" in {
+    val oso = new Oso() with Depredador with Contemplativo with Mostrable
+
+    assertResult(oso.toString)("yo pensativo depredador oso")
+  }
 }

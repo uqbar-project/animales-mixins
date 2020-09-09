@@ -29,7 +29,7 @@ class AveTest extends AnyFlatSpec with should.Matchers {
 
   it should "pepita sabe mostrarse con su nombre" in {
     val pepita = fixture.pepita
-    assertResult(pepita.toString)("pepita te re-come!!")
+    assertResult(pepita.toString)("pepita depredador ave")
   }
 
   it should "pepita al volar, debe incrementar su cantidad de vuelos" in {

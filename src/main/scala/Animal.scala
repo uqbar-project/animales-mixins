@@ -12,6 +12,8 @@ class Ave {
   def volar(): Unit = {
     vuelos = vuelos + 1
   }
+
+  override def toString: String = "ave"
 }
 
 class Oso {
@@ -21,17 +23,16 @@ class Oso {
   def correr(minutos: Int): Unit = {
     cansancio = cansancio + (20 * minutos)
   }
+
+  override def toString = "oso"
 }
 
-trait Depredador extends Mostrable {
+trait Depredador {
   var energia = 0
   var alimentacion = new util.ArrayList[Comida]
 
   def comer(unaComida: String): Unit = {
-    val comida = alimentacion.find((comida) => {
-      comida.tipoComida.equals(unaComida)
-    }
-    )
+    val comida = alimentacion.find((comida) => {comida.tipoComida.equals(unaComida) })
     comida match {
       case Some(comida) => energia = energia + comida.energiaQueDa
       case _ => {}
@@ -42,7 +43,7 @@ trait Depredador extends Mostrable {
     alimentacion.add(new Comida(unaComida))
   }
 
-  override def toString: String = super.toString + " te re-come!!"
+  override def toString = "depredador " + super.toString
 }
 
 trait Contemplativo {
@@ -51,12 +52,14 @@ trait Contemplativo {
   def contemplar(): Unit = {
     estaContemplativo = true
   }
+
+  override def toString = "pensativo " + super.toString
 }
 
 trait Mostrable {
   var quienSoyYo = "yo"
 
-  override def toString: String = quienSoyYo
+  override def toString = quienSoyYo + " " + super.toString
 }
 
 object Pepita extends Ave with Depredador with Mostrable {
